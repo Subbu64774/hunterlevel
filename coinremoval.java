@@ -6,13 +6,20 @@ import java.lang.*;
 public class coinremoval {
     public static void main(String[] args)
     {
-        char c1,c2,c3;int pos;
-        StringBuilder s = new StringBuilder("THHTHHHT");
+        char c1,c2,c3;int pos,count=0,count1=0;
+        StringBuilder s = new StringBuilder("THHTHHH");
         while(!"________".equals(s)) {
             System.out.println(s);
+            for (int i=1;i<=s.length();i++)
+                System.out.print(i);
+            for (int i=0;i<s.length();i++)
+                if ('H' == s.charAt(i))
+                    count=1;
+            if (count==0)
+                break;
+            count=0;
 
-
-            System.out.println("Enter the position to delete");
+            System.out.println("\nEnter the position to delete");
             Scanner sc = new Scanner(System.in);
             pos = sc.nextInt();
             pos = pos - 1;
@@ -64,8 +71,20 @@ public class coinremoval {
             {
                 System.out.println("Please enter only available position to delete");
             }
+
         }
+        for (int i=0;i<s.length();i++)
+        {
+        if (s.charAt(i)=='_')
+            count1++;
+        }
+        if (count1==s.length())
+            System.out.println("\nCongrats..You Have Won the game");
+        else
+            System.out.println(count1+s.length()+"\nThere is no way.  You have to accept that you are failed");
+
 }
+
 
     private static int getpos(int i,StringBuilder s) {
             if(i<=0)
